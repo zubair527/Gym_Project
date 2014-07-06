@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <style type="css/text">        
+        </style>
+        <ui:composition>
+            <p:dataTable  var="m" value="#{mail.mailList}" rows="#{mail.TOTAL_ROWS}">
+
+                <p:column headerText="From" >
+                    <h:outputText value="#{m.from.userName}" />
+                    <h:outputText value="   " />
+                    <h:outputText value="#{m.from.userLogin}" />
+                </p:column>
+
+                <p:column headerText="Description" >
+                    <h:outputText value="#{m.discription}" />
+                </p:column>
+
+                <p:column headerText="Reply"  >
+                    <h:outputText value="#{m.discription}" />
+                </p:column>
+
+                <p:column headerText="Reply"  >
+                    <p:commandButton value="reply" action="#{mail.showEditor(m)}" ajax="false" />  
+                </p:column>
+                <f:facet name="footer">  
+                    <p:commandButton value="view" icon="ui-icon-view"/>  
+                </f:facet>
+            </p:dataTable><br/><br/>
+            <p:outputPanel rendered="#{mail.flag}" >
+                    <h1><b>To : 
+                           #{mail.username}</b></h1>
+                    <p:editor id="edtor" value="#{mail.discription}" width="600"/>
+                    <p:outputLabel value=""/>
+                    <p:commandButton value="send" action="#{mail.sendMail()}" ajax="false"/>
+                    <p:commandButton value="cancel" action="#{mail.reset()}" ajax="false"/>
+                    
+            </p:outputPanel>
+        </ui:composition>
+    </h:body>
+</html>

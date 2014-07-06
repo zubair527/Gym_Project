@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true" >
+
+            <p:layoutUnit position="north" size="100"  resizable="true" closable="false" collapsible="true">
+                <h:form id="north">
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="210"  resizable="true" closable="false" collapsible="true">
+                <h:form id="west">
+                    <p:growl id="westmessage"/>
+                    <p:panelMenu style="width:200px" >
+                        <p:submenu label="Member Management">
+                            <p:menuitem value="Member Manager" action="#{pageController.navigation('member/addMember')}"  icon="ui-icon-disk" ajax="false"/>
+                            <p:menuitem value="All Members" action="#{pageController.navigation('member/allMembers')}"  icon="ui-icon-disk" ajax="false"/>
+                            <p:menuitem value="Delete Member" action="#{pageController.navigation('member/deleteMember')}"  icon="ui-icon-trash" ajax="false"/>
+
+                        </p:submenu>
+                        <p:submenu label="Exercise Management">
+                            <p:menuitem value="Schedule" action="#{pageController.navigation('member/schedule')}"  icon="ui-icon-disk" ajax="false"/>
+                            <p:menuitem value="Special Instruction" action="#{pageController.navigation('member/specialInstruction')}"  icon="ui-icon-disk" ajax="false"/>
+                            <p:menuitem value="Important Links" action="#{pageController.navigation('member/importentLinks')}" icon="ui-icon-disk" ajax="false" />
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Mail" >
+                            <p:menuitem value="compose" action="#{pageController.navigation('member/schedule')}"  icon="ui-icon-pencil"  ajax="false"/>
+                            <p:menuitem value="inbox" action="#{pageController.navigation('member/inbox')}"  icon="ui-icon-mail-closed"  ajax="false"/>
+                            <p:menuitem value="send mail" action="#{pageController.navigation('member/sendMail')}"  icon="ui-icon-disk" ajax="false"/>
+                            <p:menuitem value="Important Links" action="#{pageController.navigation('member/importentLinks')}" icon="ui-icon-disk" ajax="false" />
+                        </p:submenu>
+                        <p:separator />
+                        
+                        <p:submenu label="Logout" >
+                            <p:menuitem value="Logout" action="#{pageController.logout()}" icon="ui-icon-power" ajax="false"/>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center"   visible="true" id="b">
+                <h:form id="center">
+                    <div id="centerContent" class="right_content">
+
+                        <ui:insert name="content" >
+                            <ui:include src="#{pageController.url}.xhtml"/>  
+                        </ui:insert>
+                    </div>        
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

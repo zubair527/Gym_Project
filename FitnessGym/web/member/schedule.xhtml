@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <ui:composition>
+            <p:dataTable  var="e" value="#{exercise.list}" rows="#{exercise.TOTAL_ROWS}" editable="true">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{e.esDay}" />
+                    </f:facet>
+                    <f:facet name="input">
+                        <h:inputText value="#{e.esDay}" />
+                    </f:facet>
+                </p:cellEditor>
+
+                <p:column headerText="Day " >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{e.esDay}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{e.esDay}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Game">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{e.esGame}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{e.esGame}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nutrition" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{e.esNutrition}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{e.esNutrition}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Video" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{e.esVideo}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{e.esVideo}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column style="width:6%">
+                    <p:rowEditor />
+                </p:column>
+
+            </p:dataTable><br/><br/>
+
+            <p:selectOneMenu  value="#{exercise.esDay}">
+                <f:selectItem itemLabel="Monday" itemValue="Monday" />
+                <f:selectItem itemLabel="Tuesday" itemValue="Tueday" />
+                <f:selectItem itemLabel="Wednesday" itemValue="Wednesday" />
+                <f:selectItem itemLabel="Thurday" itemValue="Thurday" />                
+                <f:selectItem itemLabel="Friday" itemValue="Friday" />
+            </p:selectOneMenu><br/>
+            <p:media value="resources/media/test.flv" />
+        
+        </ui:composition>
+                        </h:body>
+                        </html>

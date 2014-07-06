@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <ui:composition>
+            <table >
+                <tr>    
+                    <td> Id:<p:inputText value="#{userManagmentController.userLogin}"/><br/></td>
+                    <td> Password:<p:inputText value="#{userManagmentController.userPassword}"/><br/></td>
+                    <td> Name:<p:inputText value="#{userManagmentController.userName}"/><br/></td>
+                    <td> Height:<p:inputText value="#{userManagmentController.userHeight}"/><br/></td>
+                    <td> Weight:<p:inputText value="#{userManagmentController.userWeight}"/><br/></td>
+                    <td>Cell No:<p:inputText value="#{userManagmentController.cell}"/><br/></td>
+                    <td><br/> 
+                        <p:selectOneMenu  value="#{userManagmentController.userType}">
+                            <f:selectItem itemLabel="member" itemValue="member" />
+                            <f:selectItem itemLabel="admin" itemValue="admin" />
+                        </p:selectOneMenu><br/>
+                    </td>
+                </tr>    
+                <tr>
+                    <td>
+                        <p:commandButton value="Add" action="#{userManagmentController.addMember()}" update="west:westmessage" ajax="false"/>  <br/>
+                    </td>
+
+                </tr> 
+            </table>
+            <p:dataTable  var="u" value="#{userManagmentController.userDataModel}" rows="#{userManagmentController.TOTAL_ROWS}" selection="#{userManagmentController.selectedUser}">
+                <p:column selectionMode="single" style="width:2%"/>
+                <p:column headerText="Member ID" >
+                    <h:outputText value="#{u.userLogin}" />
+                </p:column>
+                <p:column headerText="Member Name">
+                    <h:outputText value="#{u.userName}" />
+                </p:column>
+                <p:column headerText="Member Height" >
+                    <h:outputText value="#{u.userHeight}" />
+                </p:column>
+                <p:column headerText="Member Weight" >
+                    <h:outputText value="#{u.userWeight}" />
+                </p:column>
+                <p:column headerText="Cell No" >
+                    <h:outputText value="#{u.cell}" />
+                </p:column>
+                <p:column headerText="Email" >
+                    <h:outputText value="#{u.userEmail}" />
+                </p:column>
+
+                <f:facet name="footer">  
+                    <p:commandButton value="Delete" icon="ui-icon-trash" action="#{userManagmentController.deleteMember()}" update="west:westmessage" ajax="false"/>  
+                </f:facet>
+
+            </p:dataTable>
+        </ui:composition>
+    </h:body>
+</html>

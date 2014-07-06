@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bnf?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.username">sohail</property>
+    <property name="hibernate.connection.password">sohail</property>
+    <mapping class="org.fitnessgym.model.BmiGraph"/>
+    <mapping class="org.fitnessgym.model.ExerciseSchedule"/>
+    <mapping class="org.fitnessgym.model.User"/>
+    <mapping class="org.fitnessgym.model.Link"/>    
+    <mapping class="org.fitnessgym.model.Mail"/>    
+  </session-factory>
+</hibernate-configuration>

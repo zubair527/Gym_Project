@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://webservices.fitnessgym.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservices.fitnessgym.org/">
+
+<xs:element name="authenticate" type="tns:authenticate" />
+
+<xs:element name="authenticateResponse" type="tns:authenticateResponse" />
+
+<xs:element name="getInfo" type="tns:getInfo" />
+
+<xs:element name="getInfoResponse" type="tns:getInfoResponse" />
+
+<xs:element name="getSpecialInstruction" type="tns:getSpecialInstruction" />
+
+<xs:element name="getSpecialInstructionResponse" type="tns:getSpecialInstructionResponse" />
+
+<xs:element name="todayDiet" type="tns:todayDiet" />
+
+<xs:element name="todayDietResponse" type="tns:todayDietResponse" />
+
+<xs:element name="todayGame" type="tns:todayGame" />
+
+<xs:element name="todayGameResponse" type="tns:todayGameResponse" />
+
+<xs:element name="updateInfo" type="tns:updateInfo" />
+
+<xs:element name="updateInfoResponse" type="tns:updateInfoResponse" />
+
+<xs:complexType name="todayGame">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="todayGameResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticate">
+<xs:sequence>
+<xs:element name="param1" type="xs:string" minOccurs="0" />
+<xs:element name="param2" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="bmiGraphs" type="tns:bmiGraph" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="cell" type="xs:string" minOccurs="0" />
+<xs:element name="instructor" type="tns:user" minOccurs="0" />
+<xs:element name="instructors" type="tns:user" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="specialInstruction" type="xs:string" minOccurs="0" />
+<xs:element name="userDoe" type="xs:dateTime" minOccurs="0" />
+<xs:element name="userEmail" type="xs:string" minOccurs="0" />
+<xs:element name="userHeight" type="xs:float" />
+<xs:element name="userId" type="xs:int" />
+<xs:element name="userLogin" type="xs:string" minOccurs="0" />
+<xs:element name="userName" type="xs:string" minOccurs="0" />
+<xs:element name="userPassword" type="xs:string" minOccurs="0" />
+<xs:element name="userType" type="xs:string" minOccurs="0" />
+<xs:element name="userWeight" type="xs:float" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bmiGraph">
+<xs:sequence>
+<xs:element name="ubId" type="xs:int" />
+<xs:element name="user" type="tns:user" minOccurs="0" />
+<xs:element name="userBmi" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="todayDiet">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="todayDietResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getInfo">
+<xs:sequence>
+<xs:element name="param1" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getInfoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateInfo">
+<xs:sequence>
+<xs:element name="param1" type="tns:user" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateInfoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSpecialInstruction">
+<xs:sequence>
+<xs:element name="param1" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSpecialInstructionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
